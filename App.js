@@ -9,24 +9,25 @@ import {
   StyleSheet,
 } from "react-native";
 
-import MonsterSearch from "./components/MonsterSearch.js";
+import MonsterSearch from "./client/components/MonsterSearch.js";
+import Banner from "./client/components/Banner.js";
 
 const App = () => {
   return (
     <ScrollView>
-      <Text>Some text</Text>
-      <View>
-        <Text>Some more text</Text>
+      <Banner />
+
+      <View style={styles.container}>
+        <MonsterSearch />
         <Image
           source={{
             uri: "https://reactnative.dev/docs/assets/p_cat2.png",
           }}
           style={styles.image}
         />
-        <MonsterSearch />
+
         {/* <StatusBar style="auto" /> */}
       </View>
-
     </ScrollView>
   );
 };
