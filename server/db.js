@@ -1,24 +1,24 @@
 const mongoose = require("mongoose");
-console.log("mongoose: ", mongoose);
-// mongoose.connect("mongodb://localhost/monsters");
 
-// // 2. Set up any schema and models needed by the app
-// let monsterSchema = mongoose.Schema({
-//   name: String,
-//   strategy: String,
-// });
+mongoose.connect("mongodb://localhost/monsters");
 
-// let Monster = mongoose.model("Monster", monsterSchema);
+// 2. Set up any schema and models needed by the app
+let monsterSchema = mongoose.Schema({
+  name: String,
+  data: Object,
+  strategy: [],
+});
 
-const db = {
-  saveMonster: (monsterObj) => {
+let Monster = mongoose.model("Monster", monsterSchema);
+
+  const saveMonster = (monsterObj) => {
     console.log("Saving word: ", monsterObj);
     return Monster.findOneAndUpdate({ name: monsterObj.name }, monsterObj, {
       upsert: true,
     });
-  },
+  };
 
-  getMonster: async (monster) => {
+  const getMonster = async (monster) => {
     try {
       console.log("Getting Monster: ", monster);
       const data = await Monster.findOne({ name: monster });
@@ -27,7 +27,10 @@ const db = {
     } catch (err) {
       console.error(err);
     }
-  },
-};
+  };
 
-export default db;
+
+module.exports = {
+  getMonster,
+  saveMonster,
+};
