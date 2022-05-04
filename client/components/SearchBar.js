@@ -19,10 +19,12 @@ const SearchBar = (props) => {
         if (!monsterData) {
           props.setMessage(`${searchInputRef.current.value} not found, please try again...`);
         } else {
+          api.addMonsterHandler(monsterData);
           props.setMonster(monsterData);
           props.setMessage(`Watch out, ${searchInputRef.current.value} right behind you!`);
         }
-
+        const eventData = await api.fetchEventsHandler();
+        console.log(eventData);
         searchInputRef.current.value = "";
       } catch (err) {
         console.log(true);
