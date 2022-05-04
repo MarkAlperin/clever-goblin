@@ -7,11 +7,11 @@ import { Text, StyleSheet } from "react-native";
 //   fontWeigh
 // `;
 
-const Banner = () => {
+const Banner = (props) => {
   return (
     <Fragment>
       <Text style={styles.banner}>Clever Goblin</Text>
-      <Text style={styles.text}>I'm not trying kill you, but the Goblins are!</Text>
+      <Text style={styles.text}>{props.message}</Text>
     </Fragment>
   );
 };

@@ -1,5 +1,5 @@
 // import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React,  from "react";
 import {
   View,
   Text,
@@ -9,8 +9,9 @@ import {
   StyleSheet,
 } from "react-native";
 
-import MonsterSearch from "./client/components/MonsterSearch.js";
+import SearchBar from "./client/components/SearchBar.js";
 import Banner from "./client/components/Banner.js";
+import Monster from "./client/components/Monster.js";
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
       <Banner />
 
       <View style={styles.container}>
-        <MonsterSearch />
+        <SearchBar />
         <Image
           source={{
             uri: "https://reactnative.dev/docs/assets/p_cat2.png",
