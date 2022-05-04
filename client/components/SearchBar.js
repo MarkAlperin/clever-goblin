@@ -3,7 +3,7 @@ import { View, Text, TextInput, StyleSheet } from "react-native";
 
 import api from "../api/helpers.js";
 
-const MonsterSearch = (props) => {
+const SearchBar = (props) => {
   const searchInputRef = useRef();
 
   useEffect(() => {

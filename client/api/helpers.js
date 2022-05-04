@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import db from "./db.js";
+
 const api = {
 
   getMonster: async (monster) => {
