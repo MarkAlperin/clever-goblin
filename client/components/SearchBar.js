@@ -23,8 +23,8 @@ const SearchBar = (props) => {
           props.setMonster(monsterData);
           props.setMessage(`Watch out, ${searchInputRef.current.value} right behind you!`);
         }
-        const eventData = await api.fetchEventsHandler();
-        console.log(eventData);
+        const marksData = await api.fetchMonsterHandler();
+        console.log({marksData});
         searchInputRef.current.value = "";
       } catch (err) {
         console.log(true);

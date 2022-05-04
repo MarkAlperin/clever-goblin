@@ -26,7 +26,6 @@ const App = () => {
   return (
     <ScrollView>
       <Banner message={bannerMessage} />
-
       <View style={styles.container}>
         <SearchBar setMonster={setMonster} setMessage={setMessage} />
         <ImageBackground
