@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, SafeAreaView, StyleSheet } from "react-native";
 // import styled from 'styled-components/native';
 
 // const StyledText = styled.Text`
@@ -9,22 +9,23 @@ import { Text, StyleSheet } from "react-native";
 
 const Banner = (props) => {
   return (
-    <Fragment>
+    <SafeAreaView>
       <Text style={styles.banner}>Clever Goblin</Text>
-      <Text style={styles.text}>{props.message}</Text>
-    </Fragment>
+      <Text style={styles.text}>I'm not trying to kill you... but the goblins are.</Text>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   banner: {
     textAlign: "center",
-    fontWeight: 800,
-    margin: "10px",
+    fontWeight: "bold",
+    margin: "2%",
+    marginTop: "5%"
   },
   text: {
     textAlign: "center",
-    margin: "5px",
+    margin: "1%",
   }
 });
 

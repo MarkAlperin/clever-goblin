@@ -1,57 +1,33 @@
-// import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  ImageBackground,
-  ScrollView,
-  TextInput,
-  StyleSheet,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, Text, SafeAreaView } from "react-native";
+import PagerView from "react-native-pager-view";
 
-import SearchBar from "./client/components/SearchBar.js";
-import Monster from "./client/components/Monster.js";
-import Banner from "./client/components/Banner.js";
+import MainPage from "./client/components/MainPage";
+import SearchPage from "./client/components/SearchPage.js";
+
 
 const App = () => {
-  const [monster, setMonster] = useState(null);
-  const [bannerMessage, setBannerMessage] = useState(
-    "I'm not trying kill you... but the Goblins are!"
-  );
-
-  const setMessage = (message) => {
-    setBannerMessage(message);
-  };
-
   return (
-    <ScrollView>
-      <Banner message={bannerMessage} />
-      <View style={styles.container}>
-        <SearchBar setMonster={setMonster} setMessage={setMessage} />
-        <ImageBackground
-          source={{
-            uri: "https://reactnative.dev/docs/assets/p_cat2.png",
-          }}
-          style={styles.image}
-        />
-        {monster && <Monster monster={monster}/>}
-        {/* <StatusBar style="auto" /> */}
-      </View>
-    </ScrollView>
+    <SafeAreaView style={{ flex: 1 }}>
+      <PagerView style={styles.viewPager} initialPage={0}>
+        <MainPage key="1" />
+        <SearchPage key="2" />
+        <View style={styles.page} key="3">
+          <Text>Third page</Text>
+        </View>
+      </PagerView>
+    </SafeAreaView>
   );
 };
 
-export default App;
-
 const styles = StyleSheet.create({
-  container: {
+  viewPager: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
-  image: {
-    width: 300,
-    height: 300,
+  page: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
+
+export default App;

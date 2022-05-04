@@ -17,21 +17,21 @@ const api = {
     }
   },
 
-  addMonsterHandler: async (monster) => {
+  addMonsterHandler: async (monster, body) => {
     try {
       console.log("addmonsterhandler", monster);
       const response = await fetch(
-        "https://clever-goblin-default-rtdb.firebaseio.com/monsters.json",
+        `https://clever-goblin-default-rtdb.firebaseio.com/monsters/${monster}.json`,
         {
           method: "POST",
-          body: JSON.stringify(monster),
+          body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
       const data = await response.json();
-      console.log("returned data: ", data);
+      // console.log("returned data: ", data);
     } catch (err) {
       console.error(err);
     }
@@ -46,7 +46,7 @@ const api = {
         throw new Error("Something went Wrong!");
       }
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       console.error(error);
