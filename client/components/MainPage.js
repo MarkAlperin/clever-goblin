@@ -14,7 +14,7 @@ import SearchBar from "./SearchBar.js";
 import Monster from "./Monster.js";
 import Banner from "./Banner.js";
 
-const MainPage = () => {
+const MainPage = (props) => {
   // const [monster, setMonster] = useState(null);
   // const [bannerMessage, setBannerMessage] = useState(
   //   "I'm not trying kill you... but the Goblins are!"
@@ -26,17 +26,15 @@ const MainPage = () => {
 
   return (
     <View style={styles.container}>
-      <Banner />
-      {/* <SearchBar setMonster={setMonster} setMessage={setMessage} /> */}
+      <Banner monster={props.monster}/>
       <Image
         source={{
           uri: "https://reactnative.dev/docs/assets/p_cat2.png",
         }}
         style={styles.image}
       />
-      {/* {monster && <Monster monster={monster} />} */}
-      {/* <StatusBar style="auto" /> */}
       <Text>Swipe ➡️</Text>
+
     </View>
   );
 };

@@ -12,8 +12,9 @@ import {
 import SearchBar from "./SearchBar.js";
 import Monster from "./Monster.js";
 
-const SearchPage = (props) => {
+// const background = require{"../../assets/purple.jpeg";
 
+const SearchPage = (props) => {
   const [monster, setMonster] = useState(null);
   const [bannerMessage, setBannerMessage] = useState(
     "I'm not trying kill you... but the Goblins are!"
@@ -29,8 +30,18 @@ const SearchPage = (props) => {
 
   return (
     <View style={styles.container}>
-      <SearchBar setMonster={setMonsterHandler} setMessage={setMessage} />
-      {monster && <Monster monster={monster} />}
+      <ImageBackground
+        source={ require("../../assets/purple.jpeg")}
+        resizeMode="cover"
+        style={styles.background}
+      >
+        <SearchBar
+          style={styles.search}
+          setMonster={props.setMonster}
+          setMessage={setMessage}
+        />
+        {monster && <Monster style={styles.monster} monster={monster} />}
+      </ImageBackground>
     </View>
   );
 };
@@ -42,7 +53,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
+  // search: {
+  //   flex: 2,
+  //   backgroundColor: "red",
+  // },
+  // monster: {
+  //   flex: 5,
+  //   backgroundColor: "blue",
+  // },
+  background: {},
 });
 
 export default SearchPage;

@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, SafeAreaView } from "react-native";
 import PagerView from "react-native-pager-view";
 
 import MainPage from "./client/components/MainPage";
 import SearchPage from "./client/components/SearchPage.js";
-
+import StatsPage from "./client/components/StatsPage.js";
 
 const App = () => {
+  const [monster, setMonster] = useState(null);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <PagerView style={styles.viewPager} initialPage={0}>
-        <MainPage key="1" />
-        <SearchPage key="2" />
-        <View style={styles.page} key="3">
-          <Text>Third page</Text>
-        </View>
+        <MainPage monster={monster} key="1" />
+        <SearchPage monster={monster} setMonster={setMonster} key="2" />
+        <StatsPage monster={monster} key="3" />
       </PagerView>
     </SafeAreaView>
   );

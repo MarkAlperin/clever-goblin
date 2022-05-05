@@ -59,11 +59,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: "5%",
-    borderColor: "gray",
-    borderWidth: 1,
+    borderColor: "green",
+    borderWidth: 2,
+    padding: 12,
+    borderRadius: 15,
+    margin: 5,
   },
   button: {
     color: "blue",
+    borderColor: "green",
+    borderWidth: 2,
+    padding: 12,
+    borderRadius: 15,
+
   },
 });
 
