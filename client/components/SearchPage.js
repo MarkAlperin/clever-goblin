@@ -15,23 +15,17 @@ import Monster from "./Monster.js";
 // const background = require{"../../assets/purple.jpeg";
 
 const SearchPage = (props) => {
-  const [monster, setMonster] = useState(null);
-  const [bannerMessage, setBannerMessage] = useState(
-    "I'm not trying kill you... but the Goblins are!"
-  );
+  // const [monster, setMonster] = useState(null);
+  const [message, setMessage] = useState("");
 
-  const setMessage = (message) => {
-    setBannerMessage(message);
-  };
-
-  const setMonsterHandler = (monster) => {
-    setMonster(monster);
-  };
+  // const setMonsterHandler = (monster) => {
+  //   setMonster(monster);
+  // };
 
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={ require("../../assets/purple.jpeg")}
+        source={require("../../assets/purple.jpeg")}
         resizeMode="cover"
         style={styles.background}
       >
@@ -40,7 +34,9 @@ const SearchPage = (props) => {
           setMonster={props.setMonster}
           setMessage={setMessage}
         />
-        {monster && <Monster style={styles.monster} monster={monster} />}
+        {props.monster && (
+          <Monster style={styles.monster} monster={props.monster} />
+        )}
       </ImageBackground>
     </View>
   );

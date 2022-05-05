@@ -9,11 +9,11 @@ import { Text, SafeAreaView, StyleSheet, View } from "react-native";
 
 const Banner = (props) => {
   return (
-    <SafeAreaView>
+    <View>
       <Text style={styles.banner}>Clever Goblin</Text>
       {props.monster && <Text>{`The ${props.monster.name}s don't know they are here to lose, the ${props.monster.name}s are trying to win.`}</Text>}
       {!props.monster && <Text style={styles.text}>A tool to help dungeon masters get the most out of their monsters on the tabletop</Text>}
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -21,8 +21,9 @@ const styles = StyleSheet.create({
   banner: {
     textAlign: "center",
     fontWeight: "bold",
+    fontSize: 40,
     margin: "2%",
-    marginTop: "25%"
+    marginTop: "45%"
   },
   text: {
     textAlign: "center",

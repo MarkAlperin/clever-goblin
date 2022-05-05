@@ -14,7 +14,7 @@ const App = () => {
       <PagerView style={styles.viewPager} initialPage={0}>
         <MainPage monster={monster} key="1" />
         <SearchPage monster={monster} setMonster={setMonster} key="2" />
-        <StatsPage monster={monster} key="3" />
+        <StatsPage m={monster} key="3" />
       </PagerView>
     </SafeAreaView>
   );

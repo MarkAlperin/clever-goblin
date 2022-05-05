@@ -13,7 +13,8 @@ import tactics from "../../assets/tactics.js";
 const Monster = (props) => {
 
 useEffect(() => {
-  console.log(tactics[props.monster.name.toLowerCase()]);
+  let strat = tactics[props.monster.name.toLowerCase()]
+  console.log(strat);
 },[props.monster]);
 
   return (
