@@ -11,12 +11,13 @@ import {
 
 import SearchBar from "./SearchBar.js";
 import Monster from "./Monster.js";
+import tactics from "../../assets/tactics.js";
 
 // const background = require{"../../assets/purple.jpeg";
 
 const SearchPage = (props) => {
   // const [monster, setMonster] = useState(null);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("No monster selected");
 
   // const setMonsterHandler = (monster) => {
   //   setMonster(monster);
@@ -24,20 +25,28 @@ const SearchPage = (props) => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../assets/purple.jpeg")}
         resizeMode="cover"
         style={styles.background}
-      >
-        <SearchBar
-          style={styles.search}
-          setMonster={props.setMonster}
-          setMessage={setMessage}
-        />
-        {props.monster && (
-          <Monster style={styles.monster} monster={props.monster} />
-        )}
-      </ImageBackground>
+      > */}
+        <View style={styles.top}>
+          <SearchBar
+            style={styles.search}
+            setMonster={props.setMonster}
+            setMessage={setMessage}
+          />
+        </View>
+
+        <View style={styles.middle}>
+          {!props.monster && <Text>{message}</Text>}
+          {props.monster && <Text>{props.monster.name}</Text>}
+          {props.monster && <Text>{tactics[props.monster.name.toLowerCase()]}</Text>}
+        </View>
+        <View style={styles.bottom} >
+            {props.monster && <Text>How would you play this monster</Text>}
+        </View>
+      {/* </ImageBackground> */}
     </View>
   );
 };
@@ -45,18 +54,33 @@ const SearchPage = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
+    backgroundColor: "whitesmoke",
+    padding: 20,
+    margin: 10,
   },
-  // search: {
-  //   flex: 2,
-  //   backgroundColor: "red",
-  // },
-  // monster: {
-  //   flex: 5,
-  //   backgroundColor: "blue",
-  // },
+  top: {
+    flex: 0.2,
+    alignContent: "center",
+    justifyContent: "center",
+    backgroundColor: "grey",
+    textAlign: "center",
+    borderWidth: 5,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  middle: {
+    flex: 0.5,
+    backgroundColor: "beige",
+    borderWidth: 5,
+  },
+  bottom: {
+    flex: 0.2,
+    backgroundColor: "brown",
+    borderWidth: 5,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
   background: {},
 });
 

@@ -19,7 +19,7 @@ const api = {
 
   addMonsterHandler: async (monster, body) => {
     try {
-      console.log("addmonsterhandler", monster);
+      console.log("addmonsterhandler", monster, body);
       const response = await fetch(
         `https://clever-goblin-default-rtdb.firebaseio.com/monsters/${monster}.json`,
         {

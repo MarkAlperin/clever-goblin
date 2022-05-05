@@ -24,13 +24,18 @@ const MainPage = (props) => {
   //   setBannerMessage(message);
   // };
 
+  // <ImageBackground
+  //       source={require("../../assets/purple.jpeg")}
+  //       resizeMode="cover"
+  //       style={styles.background}
+  //     ></ImageBackground>
+
   return (
     <View style={styles.container}>
       <Banner monster={props.monster}/>
       <Image
-        source={{
-          uri: "https://reactnative.dev/docs/assets/p_cat2.png",
-        }}
+        source={require("../../assets/goblin.png")}
+        resizeMode="cover"
         style={styles.image}
       />
       <Text>Swipe ➡️</Text>
@@ -44,7 +49,7 @@ export default MainPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "whitesmoke",
     alignItems: "center",
     justifyContent: "center",
   },
