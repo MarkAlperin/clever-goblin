@@ -1,44 +1,44 @@
-import React, { useRef, useEffect } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import React, { useRef, useState, useEffect } from "react";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 
 import api from "../api/helpers.js";
 
-const MonsterSearch = (props) => {
-  const searchInputRef = useRef();
+const SearchBar = (props) => {
+  const [searchInput, setSearchInput] = useState('');
 
-  useEffect(() => {
-    searchInputRef.current.value = "goblin"
-  }, []);
+  const onChangeHandler = (event) => {
+    setSearchInput(event);
+    console.log('changeHandler: ', event);
+  };
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (searchInputRef.current.value.length > 0) {
+    if (searchInput.length > 0) {
       try {
-        const monsterData = await api.getMonster(searchInputRef.current.value);
-        console.log({monsterData});
+        const monsterData = await api.getMonster(searchInput.toLowerCase());
         if (!monsterData) {
-          props.setMessage(`${searchInputRef.current.value} not found, please try again...`);
+          props.setMessage(`${searchInput} not found, please try again...`);
         } else {
+          // console.log({monsterData});
           props.setMonster(monsterData);
-          props.setMessage(`Watch out, ${searchInputRef.current.value} right behind you!`);
+          // props.setMessage(`Watch out, ${searchInput} right behind you!`);
         }
-
-        searchInputRef.current.value = "";
+        // const tactics = await api.fetchMonsterHandler(searchInput);
       } catch (err) {
-        console.log(true);
         console.error(err);
       }
     }
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         style={styles.input}
-        ref={searchInputRef}
-        onSubmit={submitHandler}
+        value={searchInput}
+        onChangeText={onChangeHandler}
+        placeholder="Search monster..."
       />
-      <button onClick={submitHandler}>Search</button>
+      <TouchableOpacity style={styles.button} onPress={submitHandler}><Text>Search</Text></TouchableOpacity>
     </View>
   );
 };
@@ -46,20 +46,37 @@ const MonsterSearch = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "space-evenly",
+    padding: 10,
+    // width: 100,
+    // height: 100
   },
   input: {
-    flex: 1,
+    flex: .6,
     justifyContent: "center",
     alignItems: "center",
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
+    height: "5%",
+    borderColor: "green",
+    borderWidth: 3,
+    padding: 12,
+    borderRadius: 15,
+    margin: 5,
+    minWidth: 100,
   },
   button: {
-    color: "blue",
+    flex: .2,
+
+    borderColor: "green",
+    borderWidth: 3,
+    padding: 5,
+    minWidth: 75,
+    borderRadius: 15,
+
   },
 });
 

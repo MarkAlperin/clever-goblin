@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, SafeAreaView, StyleSheet, View } from "react-native";
 // import styled from 'styled-components/native';
 
 // const StyledText = styled.Text`
@@ -9,22 +9,27 @@ import { Text, StyleSheet } from "react-native";
 
 const Banner = (props) => {
   return (
-    <Fragment>
+    <View>
       <Text style={styles.banner}>Clever Goblin</Text>
-      <Text style={styles.text}>{props.message}</Text>
-    </Fragment>
+      {props.monster && <Text>{`The ${props.monster.name}s don't know they are here to lose, the ${props.monster.name}s are trying to win.`}</Text>}
+      {!props.monster && <Text style={styles.text}>A tool to help dungeon masters get the most out of their monsters on the tabletop</Text>}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   banner: {
     textAlign: "center",
-    fontWeight: 800,
-    margin: "10px",
+    fontWeight: "bold",
+    fontSize: 40,
+    margin: "2%",
+    marginTop: "45%"
   },
   text: {
     textAlign: "center",
-    margin: "5px",
+    marginLeft: "10%",
+    marginRight: "10%",
+    marginTop: "10%",
   }
 });
 
